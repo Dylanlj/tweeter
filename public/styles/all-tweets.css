@@ -2,9 +2,13 @@
   position: relative;
   top: 5em;
   border-radius: 5px;
-  border: 2px solid grey;
+  border: 2px solid #cccccc;
   margin: 2em;
   background-color: white;
+}
+
+.all-tweets.hovering {
+  border: 2px solid grey;
 }
 
 .all-tweets article {
@@ -17,9 +21,7 @@
   opacity: 0.5;
 }
 
-.all-tweets.hovering header{
-  background-color: #e6e6e6;
-  padding: 10px;
+.all-tweets.hovering header {
   opacity: 1;
 }
 
@@ -31,8 +33,7 @@
 }
 
 .all-tweets header .email {
-  position: absolute;
-  right: 10px;
+  float: right;
   color: grey;
 }
 
@@ -45,5 +46,9 @@
   border-top: 1px solid;
   padding: 10px;
   font-size: 10px;
+}
+
+.all-tweets footer .symbols {
+float: right;
 }
 
