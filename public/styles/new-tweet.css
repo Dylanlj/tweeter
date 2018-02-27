@@ -20,5 +20,8 @@
 .new-tweet form .counter {
   position:absolute;
   right: 10px;
+}
 
+.new-tweet form .negative {
+  color: red;
 }
