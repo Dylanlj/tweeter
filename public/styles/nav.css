@@ -3,9 +3,11 @@ nav {
   left: 0;
   right: 0;
   height: 80px;
+  top: 0;
   background-color: #00a087;
   color: #e8fdff;
   padding: 0em 2em 0em 2em;
+  z-index: 2;
 }
 
 #nav-bar .logo {

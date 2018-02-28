@@ -3,87 +3,68 @@
  * jQuery is already loaded
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
-const data = [
-  {
-    "user": {
-      "name": "Newton",
-      "avatars": {
-        "small":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_50.png",
-        "regular": "https://vanillicon.com/788e533873e80d2002fa14e1412b4188.png",
-        "large":   "https://vanillicon.com/788e533873e80d2002fa14e1412b4188_200.png"
-      },
-      "handle": "@SirIsaac"
-    },
-    "content": {
-      "text": "If I have seen further it is by standing on the shoulders of giants"
-    },
-    "created_at": 1461116232227
-  },
-  {
-    "user": {
-      "name": "Descartes",
-      "avatars": {
-        "small":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_50.png",
-        "regular": "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc.png",
-        "large":   "https://vanillicon.com/7b89b0d8280b93e2ba68841436c0bebc_200.png"
-      },
-      "handle": "@rd" },
-    "content": {
-      "text": "Je pense , donc je suis"
-    },
-    "created_at": 1461113959088
-  },
-  {
-    "user": {
-      "name": "Johann von Goethe",
-      "avatars": {
-        "small":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_50.png",
-        "regular": "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1.png",
-        "large":   "https://vanillicon.com/d55cf8e18b47d4baaf60c006a0de39e1_200.png"
-      },
-      "handle": "@johann49"
-    },
-    "content": {
-      "text": "Es ist nichts schrecklicher als eine tätige Unwissenheit."
-    },
-    "created_at": 1461113796368
+
+
+$( document ).ready(function() {
+
+
+  $(function() {
+    //need to rethink how i'm calling these guys
+    var $tweetButton = $('form');
+    $tweetButton.on('submit', function (event) {
+
+      event.preventDefault()
+
+      $.ajax({
+        url: '/tweets',
+        method: 'POST',
+        data: $(this).serialize(),
+        success: loadTweets
+      })
+    });
+  });
+
+//gets the tweets then gives them here to renderTweets?
+  function loadTweets(){
+    console.log("yay")
+    $.ajax({
+      url: '/tweets',
+      method: 'GET',
+      success: function (tweets) {
+        console.log('Success: ', tweets);
+        renderTweets(tweets);
+      }
+    });
   }
-];
 
 
-
-
-function renderTweets (tweets){
-  tweets.forEach(function(tweet){
-    let hey = createTweetElement(tweet)
-    $( document ).ready(function() {
-      $(".tweets-container").append(hey);
+  function renderTweets (tweets){
+    tweets.forEach(function(tweet){
+      let hey = createTweetElement(tweet)
+        $(".tweets-container").prepend(hey);
     })
-  })
-
-}
+  }
 
 
-function createTweetElement (tweetData){
-let dateDiff = Math.round((Date.now() - tweetData.created_at) / 86400000)
+  function createTweetElement (tweetData){
+  let dateDiff = Math.round((Date.now() - tweetData.created_at) / 86400000)
+
+  let $tweet = (
+      `<article class=tweet> 
+      <header>
+        <img class=avatar src=${tweetData.user.avatars.regular}>
+        <span class=name>${tweetData.user.name}</span>
+        <span class=handle>${tweetData.user.handle}</span>
+      </header>
+        <article class=tweet-text>${tweetData.content.text}</article>
+      <footer>${dateDiff} days ago</footer>
+    </article>`)
+  return $tweet;
+  }
 
 
-let $tweet = (
-    `<article class=tweet> 
-    <header>
-      <img class=avatar src=${tweetData.user.avatars.regular}>
-      <span class=name>${tweetData.user.name}</span>
-      <span class=handle>${tweetData.user.handle}</span>
-    </header>
-      <article class=tweet-text>${tweetData.content.text}</article>
-    <footer>${dateDiff} days ago</footer>
-  </article>`)
-return $tweet;
-  
-}
+})
 
-
-renderTweets(data);
 
 // let $tweet = (
 //     `<article class=tweet> 

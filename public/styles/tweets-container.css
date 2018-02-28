@@ -1,54 +1,55 @@
-.all-tweets {
+article.tweet {
   position: relative;
-  top: 5em;
+  top: 2em;
   border-radius: 5px;
   border: 2px solid #cccccc;
   margin: 2em;
   background-color: white;
 }
 
-.all-tweets.hovering {
+article.tweet.hovering {
   border: 2px solid grey;
 }
 
-.all-tweets article {
+article.tweet article.tweet-text {
   padding: 20px;
+
 }
 
-.all-tweets header {
+article.tweet header {
   background-color: #e6e6e6;
   padding: 10px;
   opacity: 0.5;
 }
 
-.all-tweets.hovering header {
+article.tweet.hovering header {
   opacity: 1;
 }
 
-.all-tweets header .name {
+article.tweet header .name {
   font-size: 20px;
   font-weight: bold;
   position: absolute;
   padding-left: 10px;
 }
 
-.all-tweets header .handle {
+article.tweet header .handle {
   float: right;
   color: grey;
 }
 
-.all-tweets header .avatar {
+article.tweet header .avatar {
   width: 50px;
   height: 50px;
 }
 
-.all-tweets footer {
+article.tweet footer {
   border-top: 1px solid;
   padding: 10px;
   font-size: 10px;
 }
 
-.all-tweets footer .symbols {
+article.tweet footer .symbols {
 float: right;
 }
 
