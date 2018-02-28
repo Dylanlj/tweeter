@@ -10,15 +10,24 @@ $( document ).ready(function() {
 //need to get rid of the text in the text area after this
   $(function() {
     //need to rethink how i'm calling these guys
-    var $tweetButton = $('form');
-    $tweetButton.on('submit', function (event) {
+
+    $('form').on('submit', function (event) {
       event.preventDefault()
-      $.ajax({
-        url: '/tweets',
-        method: 'POST',
-        data: $(this).serialize(),
-        success: loadTweets
-      })
+
+      let tweetText = $(this).find("textarea").val()
+
+      if(tweetText.length > 140){
+        alert("You're using too many characters")
+      } else if (tweetText.search(/\w/) === -1){
+        alert("That's an empty tweet")
+      } else {
+        $.ajax({
+          url: '/tweets',
+          method: 'POST',
+          data: $(this).serialize(),
+          success: loadTweets
+        })
+      }
     });
   });
 
@@ -29,7 +38,6 @@ $( document ).ready(function() {
       url: '/tweets',
       method: 'GET',
       success: function (tweets) {
-        console.log('Success: ', tweets);
         renderTweets(tweets);
       }
     });
@@ -63,6 +71,8 @@ $( document ).ready(function() {
 
   loadTweets();
 })
+
+//pressing enter isn't working
 
 // they may not want that loadTweets call at the bottom
 
