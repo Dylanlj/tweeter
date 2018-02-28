@@ -33,12 +33,17 @@ $( document ).ready(function() {
 
 //gets all the tweets then gives them to renderTweets?
   function loadTweets(){
-    console.log("yay")
+
     $.ajax({
       url: '/tweets',
       method: 'GET',
       success: function (tweets) {
         renderTweets(tweets);
+//removing the text of the tweet
+//can probably be refactored        
+//character counter isn't resetting
+        $('form').find('textarea').val("");
+        $('form').find(".counter").html(140)
       }
     });
   }
