@@ -65,6 +65,8 @@ function renderTweets (tweets){
 
 
 function createTweetElement (tweetData){
+let dateDiff = Math.round((Date.now() - tweetData.created_at) / 86400000)
+
 
 let $tweet = (
     `<article class=tweet> 
@@ -74,9 +76,8 @@ let $tweet = (
       <span class=handle>${tweetData.user.handle}</span>
     </header>
       <article class=tweet-text>${tweetData.content.text}</article>
-    <footer>${tweetData.created_at}</footer>
+    <footer>${dateDiff} days ago</footer>
   </article>`)
-console.log($tweet)
 return $tweet;
   
 }
@@ -84,6 +85,45 @@ return $tweet;
 
 renderTweets(data);
 
+// let $tweet = (
+//     `<article class=tweet> 
+//     <header>
+//       <img class=avatar src=>
+//       <span class=name></span>
+//       <span class=handle></span>
+//     </header>
+//       <article class=tweet-text></article>
+//     <footer>fadsfsafdsadf</footer>
+//   </article>`)
+
+// $("section").append("hebajhsd")
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//$("<article>").addClass("tweet")
+
+
+
+
+// $( document ).ready(function() {
+
+//   let $tweet = createTweetElement(tweetData)
+//     console.log($tweet)
+//   $(".tweets-container").append($tweet);
+// });
 //need to fix the time/date
 
 
