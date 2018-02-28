@@ -7,7 +7,7 @@ article.tweet {
   background-color: white;
 }
 
-article.tweet.hovering {
+article.tweet:hover {
   border: 2px solid grey;
 }
 
@@ -22,7 +22,7 @@ article.tweet header {
   opacity: 0.5;
 }
 
-article.tweet.hovering header {
+article.tweet:hover header {
   opacity: 1;
 }
 
@@ -44,7 +44,7 @@ article.tweet header .avatar {
 }
 
 article.tweet footer {
-  border-top: 1px solid;
+  border-top: 1px solid #b3b3b3;
   padding: 10px;
   font-size: 10px;
 }

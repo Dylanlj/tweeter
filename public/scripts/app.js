@@ -7,14 +7,12 @@
 
 $( document ).ready(function() {
 
-
+//need to get rid of the text in the text area after this
   $(function() {
     //need to rethink how i'm calling these guys
     var $tweetButton = $('form');
     $tweetButton.on('submit', function (event) {
-
       event.preventDefault()
-
       $.ajax({
         url: '/tweets',
         method: 'POST',
@@ -24,7 +22,7 @@ $( document ).ready(function() {
     });
   });
 
-//gets the tweets then gives them here to renderTweets?
+//gets all the tweets then gives them to renderTweets?
   function loadTweets(){
     console.log("yay")
     $.ajax({
@@ -63,51 +61,8 @@ $( document ).ready(function() {
   }
 
 
+  loadTweets();
 })
 
-
-// let $tweet = (
-//     `<article class=tweet> 
-//     <header>
-//       <img class=avatar src=>
-//       <span class=name></span>
-//       <span class=handle></span>
-//     </header>
-//       <article class=tweet-text></article>
-//     <footer>fadsfsafdsadf</footer>
-//   </article>`)
-
-// $("section").append("hebajhsd")
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//$("<article>").addClass("tweet")
-
-
-
-
-// $( document ).ready(function() {
-
-//   let $tweet = createTweetElement(tweetData)
-//     console.log($tweet)
-//   $(".tweets-container").append($tweet);
-// });
-//need to fix the time/date
-
-
-
-
+// they may not want that loadTweets call at the bottom
 
