@@ -10,7 +10,6 @@ $( document ).ready(function() {
 //need to get rid of the text in the text area after this
   $(function() {
     //need to rethink how i'm calling these guys
-
     $('form').on('submit', function (event) {
       event.preventDefault()
 
@@ -31,7 +30,8 @@ $( document ).ready(function() {
     });
   });
 
-//gets all the tweets then gives them to renderTweets?
+
+//gets all the tweets then gives them to renderTweets
   function loadTweets(){
 
     $.ajax({
@@ -56,6 +56,13 @@ $( document ).ready(function() {
     })
   }
 
+//to prevent cross site scripting
+function escape(str) {
+  var div = document.createElement('div');
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+}
+
 
   function createTweetElement (tweetData){
   let dateDiff = Math.round((Date.now() - tweetData.created_at) / 86400000)
@@ -67,7 +74,7 @@ $( document ).ready(function() {
         <span class=name>${tweetData.user.name}</span>
         <span class=handle>${tweetData.user.handle}</span>
       </header>
-        <article class=tweet-text>${tweetData.content.text}</article>
+        <article class=tweet-text>${escape(tweetData.content.text)}</article>
       <footer>${dateDiff} days ago</footer>
     </article>`)
   return $tweet;
