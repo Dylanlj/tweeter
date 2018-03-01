@@ -71,5 +71,3 @@ $(document).ready(function() {
   loadTweets();
 });
 
-//pressing enter isn"t working
-

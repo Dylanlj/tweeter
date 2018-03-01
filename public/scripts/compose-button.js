@@ -11,5 +11,3 @@ function focusToggle(){
     $("section.new-tweet").find("textarea").focus()
   };
 };
-//I had it so that whenever the compose button was clicked the focus shifted to the new-tweet textarea 
-//even if the section was sliding up, less code, but I thought you wouldn't like that
