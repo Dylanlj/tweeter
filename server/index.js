@@ -12,22 +12,13 @@ const MONGODB_URI   = "mongodb://127.0.0.1:27017/tweeter";
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-
-let db;
-
-//connecting to our mongo tweeter and pulling the tweeter collection
+//connecting to our mongo tweeter database
 MongoClient.connect(MONGODB_URI, (err, mongoInstance) => {
   if (err) throw err;
-  console.log(`Successfully connected to DB: ${MONGODB_URI}`);
-  
-  db = mongoInstance
+  console.log(`Successfully connected to DB: ${MONGODB_URI}`);  
+  let db = mongoInstance;
 
-// The `data-helpers` module provides an interface to the database of tweets.
-
-//
-// Because it exports a function that expects the `db` as a parameter, we can
-// require it and pass the `db` parameter immediately:
-// db is the argument being passed to the function being required
+  // The `data-helpers` module provides an interface to the database of tweets.
   const DataHelpers = require("./lib/data-helpers.js")(db);
 
   // The `tweets-routes` module works similarly: we pass it the `DataHelpers` object
@@ -40,4 +31,4 @@ MongoClient.connect(MONGODB_URI, (err, mongoInstance) => {
   app.listen(PORT, () => {
     console.log("Example app listening on port " + PORT);
   });
-})
+});
