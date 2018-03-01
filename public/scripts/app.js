@@ -85,6 +85,6 @@ function escape(str) {
 })
 
 //pressing enter isn't working
-
+//doesn't have the bottom right corner icons
 // they may not want that loadTweets call at the bottom
 

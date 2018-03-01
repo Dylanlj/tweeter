@@ -22,3 +22,24 @@ nav {
   margin-left: 10px;
   line-height: 80px;
 }
+
+#nav-bar #compose-button {
+  float: right;
+  margin: 7px;
+  padding: 20px;
+  border-radius: 5px;
+  border: 1px solid black;
+  background-color: #c2fced;
+  color: #21a59c;
+  font-size: 20px;
+}
+
+#nav-bar #compose-button:hover {
+  background-color: #f2fffb;
+  color: black;
+}
+
+
+
+
+
