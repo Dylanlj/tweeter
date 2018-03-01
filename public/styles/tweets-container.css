@@ -1,9 +1,9 @@
 article.tweet {
   position: relative;
-  top: 2em;
+  top: 32px;
   border-radius: 5px;
   border: 2px solid #cccccc;
-  margin: 2em;
+  margin: 32px;
   background-color: white;
 }
 
@@ -13,7 +13,6 @@ article.tweet:hover {
 
 article.tweet article.tweet-text {
   padding: 20px;
-
 }
 
 article.tweet header {
@@ -49,7 +48,25 @@ article.tweet footer {
   font-size: 10px;
 }
 
-article.tweet footer .symbols {
-float: right;
+article.tweet footer button {
+  float: right;
+  margin: 1px;
+  left: 100px;
+  border: 0px;
+  height: 15px;
+  width: 15px;
+  opacity: 0;
 }
+
+article.tweet:hover footer button {
+  opacity: 1;
+}
+
+article.tweet footer img{
+  height: 10px;
+  width: 12px;
+}
+
+/*these buttons aren't aligned with the images, 
+if they click to the side of an image may hit another button*/
 
