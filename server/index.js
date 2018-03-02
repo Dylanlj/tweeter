@@ -8,8 +8,15 @@ const app           = express();
 const Mongo         = require("mongodb");
 const MongoClient   = Mongo.MongoClient;
 const MONGODB_URI   = "mongodb://127.0.0.1:27017/tweeter";
+const sassMiddleware = require('node-sass-middleware');
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(sassMiddleware({
+  src: '../public/styles',
+  dest: '../public/css',
+  debug: true,
+  prefix: '/css'
+}))
 app.use(express.static("public"));
 
 //connecting to our mongo tweeter database
