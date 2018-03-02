@@ -14,7 +14,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(sassMiddleware({
   src: '../public/styles',
   dest: '../public/css',
-  debug: true,
   prefix: '/css'
 }))
 app.use(express.static("public"));

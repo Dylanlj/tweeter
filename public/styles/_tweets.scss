@@ -1,9 +1,37 @@
-article.tweet {
+$tweetShade: #e6e6e6;
+%tweet-boxes {
   position: relative;
-  top: 32px;
+  top:32px;
   border-radius: 5px;
-  border: 2px solid #cccccc;
+  border: 2px solid grey;
   margin: 32px;
+}
+
+.new-tweet {
+  @extend %tweet-boxes;
+  padding: 10px;
+  background-color: $tweetShade;
+
+  .new-tweet h2 {
+    border-bottom: 1px solid;
+  }
+
+  form {
+    textarea {
+      width: 100%;
+    }
+    .counter {
+      position:absolute;
+      right: 10px;
+    }
+    .negative {
+      color: red;
+    }
+  }
+}
+
+article.tweet {
+  @extend %tweet-boxes;
   background-color: white;
 
   article.tweet-text {
@@ -11,7 +39,7 @@ article.tweet {
   }
 
   header {
-    background-color: #e6e6e6;
+    background-color: $tweetShade;
     padding: 10px;
     opacity: 0.5;
 
@@ -57,14 +85,10 @@ article.tweet {
 
 article.tweet:hover {
   border: 2px solid grey;
-    header {
+  header {
     opacity: 1;
   }
   footer button {
     opacity: 1;
   }
 }
-
-
-
-
